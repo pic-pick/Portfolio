@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import mainProfileImg from "./assets/mainprofileimg2.JPG"
+import mainProfileImg from "./assets/mainprofileimg2.jpg"
 import chartImg from "./assets/chartimg.png"
 import reviewImg from "./assets/reviewimg.png"
 import reviewUiImg from "./assets/reviewui.png"
 import reviewUserFlowImg from "./assets/reviewuserflowchart.png"
 import myplannerImg from "./assets/myplannerimg.png"
-import profileImg from "./assets/profileimg.JPG"
+import profileImg from "./assets/profileimg.jpg"
 
 // import Hero from "./sections/Hero"
 // import About from "./sections/About"
@@ -26,7 +26,7 @@ function Navbar() {
             <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4 sm:px-6 md:flex-row md:items-center md:justify-between">
                 <a href="#home" className="group inline-flex items-center gap-2 text-lg font-bold tracking-tight text-zinc-900 transition duration-300 hover:-translate-y-0.5">
                     <span className="inline-flex h-2.5 w-2.5 rounded-full bg-zinc-900 transition duration-300 group-hover:scale-125 group-hover:rotate-12" />
-                    Portfolio
+                    SeungHwan.OH
                 </a>
 
                 <nav>
