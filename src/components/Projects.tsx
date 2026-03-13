@@ -4,6 +4,9 @@ import type { ProjectItem, SelectedProject } from "../types/project"
 import ProjectCard from "./ProjectCard"
 import reviewUiImg from "../assets/reviewui.png"
 import reviewUserFlowImg from "../assets/reviewuserflowchart.png"
+import daesulsc1 from "../assets/daesulsc1.png"
+import daesulsc2 from "../assets/daesulsc2.png"
+import daesulsc3 from "../assets/daesulsc3.png"
 
 function ProjectModal({
                           selectedProject,
@@ -193,14 +196,7 @@ function ProjectModal({
                                     Tech Stack
                                 </p>
                                 <div className="mt-5 flex flex-wrap gap-2">
-                                    {selectedProject.stack?.map((item) => (
-                                        <span
-                                            key={item}
-                                            className="rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700"
-                                        >
-                      {item}
-                    </span>
-                                    ))}
+                                    {selectedProject.stack?.map((item) => (<span key={item} className="rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700">{item}</span>))}
                                 </div>
                             </section>
 
@@ -214,6 +210,63 @@ function ProjectModal({
                             </section>
                         </div>
                     </div>
+                ) : selectedProject.type === "daesul-detail" ? (
+                    <div className="flex-1 overflow-y-auto bg-white px-4 py-6 sm:px-6 sm:py-8">
+                        <div className="mx-auto max-w-4xl space-y-8">
+                            <section className="border-t border-zinc-200 pt-6">
+                                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">
+                                    Summary
+                                </p>
+                                <h4 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900">
+                                    퍼블리싱 웹사이트
+                                </h4>
+                                <p className="mt-5 text-base leading-8 text-zinc-600">
+                                    {selectedProject.description}
+                                </p>
+                            </section>
+
+                            <section className="border-t border-zinc-200 pt-6">
+                                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">
+                                    Tech Stack
+                                </p>
+                                <div className="mt-5 flex flex-wrap gap-2">
+                                    {selectedProject.stack?.map((item) => (<span key={item} className="rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700">{item}</span>))}
+                                </div>
+                            </section>
+
+                            <section className="border-t border-zinc-200 pt-6">
+                                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">
+                                    Description
+                                </p>
+                                <p className="mt-4 text-base leading-8 text-zinc-600">
+                                    이 프로젝트에서는 대설 브랜드 사이트를 재구성한 퍼블리싱 작업으로 싱글 페이지 구성으로 react 없이 구현을 목적으로 한 프로젝트입니다.
+                                </p>
+                            </section>
+
+                            <section className="border-t border-zinc-200 pt-6">
+                                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">
+                                    ScreenShot
+                                </p>
+                                <div className="mt-5 overflow-hidden rounded-3xl border border-zinc-200 bg-white">
+                                    <img
+                                        src={daesulsc1}
+                                        alt="퍼블리싱 스크린샷1"
+                                        className="h-full w-full object-cover"
+                                    />
+                                    <img
+                                        src={daesulsc2}
+                                        alt="퍼블리싱 스크린샷2"
+                                        className="h-full w-full object-cover"
+                                    />
+                                    <img
+                                        src={daesulsc3}
+                                        alt="퍼블리싱 스크린샷3"
+                                        className="h-full w-full object-cover"
+                                    />
+                                </div>
+                            </section>
+                        </div>
+                    </div>
                 ) : (
                     <div className="flex-1 bg-zinc-100">
                         <iframe
@@ -223,6 +276,9 @@ function ProjectModal({
                         />
                     </div>
                 )}
+
+
+
             </div>
         </div>
     )
@@ -246,6 +302,15 @@ function Projects() {
             setSelectedProject({
                 title: project.title,
                 type: "portfolio-detail",
+                githubUrl: project.githubUrl,
+                description: project.description,
+                stack: project.stack,
+                liveUrl: project.liveUrl,
+            })
+        } else if (project.detailType === "daesul-detail") {
+            setSelectedProject({
+                title: project.title,
+                type: "daesul-detail",
                 githubUrl: project.githubUrl,
                 description: project.description,
                 stack: project.stack,

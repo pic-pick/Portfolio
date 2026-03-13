@@ -2,6 +2,7 @@ import chartImg from "../assets/chartimg.png"
 import reviewImg from "../assets/reviewimg.png"
 import myplannerImg from "../assets/myplannerimg.png"
 import portfolioImg from "../assets/portfolio.png"
+import daesulIng from "../assets/daesulImg.png"
 import type { ProjectItem } from "../types/project"
 
 export const projects: ProjectItem[] = [
@@ -41,10 +42,21 @@ export const projects: ProjectItem[] = [
         title: '포트폴리오 웹사이트 (1인 개인 프로젝트)',
         description:
             'React와 TypeScript를 기반으로 직접 디자인하고 구현한 개인 포트폴리오 웹사이트입니다. 프로젝트 소개, 기술 스택, 연락처, 상세 모달 구성을 통해 저의 개발 경험과 결과물을 한눈에 볼 수 있도록 구성했습니다.',
-        stack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Vercel'],
+        stack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
         githubUrl: 'https://github.com/pic-pick/Portfolio',
         liveUrl: 'https://portfolio-9fmvpypur-pro5kinghwan-5655s-projects.vercel.app/',
         image: portfolioImg,
         detailType: 'portfolio-detail',
+    },
+    {
+        info: '개인 프로젝트 [2026.03]',
+        title: '대설 빙수 웹 퍼블리싱 사이트',
+        description:
+            '기존 대설 웹사이트를 참고하여 UI구조를 재구성하고 퍼블리싱한 프로젝트입니다.',
+        stack: ['HTML', 'CSS', 'JavaScript', 'Figma'],
+        githubUrl: 'https://github.com/pic-pick/daesul-web-publishing',
+        liveUrl: 'https://daesul-web-publishing.vercel.app/',
+        image: daesulIng,
+        detailType: 'daesul-detail',
     },
 ]
