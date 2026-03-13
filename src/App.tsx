@@ -6,12 +6,8 @@ import reviewUiImg from "./assets/reviewui.png"
 import reviewUserFlowImg from "./assets/reviewuserflowchart.png"
 import myplannerImg from "./assets/myplannerimg.png"
 import profileImg from "./assets/profileimg.jpg"
+import portfolioImg from "./assets/portfolio.png"
 
-// import Hero from "./sections/Hero"
-// import About from "./sections/About"
-// import Skills from "./sections/Skills"
-// import Projects from "./sections/Projects"
-// import Contact from "./sections/Contact"
 
 function Navbar() {
     const menus = [
@@ -263,10 +259,13 @@ function Skills() {
 function Projects() {
     const [selectedProject, setSelectedProject] = useState<null | {
       title: string
-      type?: 'pdf' | 'review-detail'
+      type?: 'pdf' | 'review-detail' | 'portfolio-detail'
       pdfUrl?: string
       githubUrl?: string
       demoUrl?: string
+      description?: string
+      stack?: string[]
+      liveUrl?: string
     }>(null)
     const projects: {
       info: string
@@ -277,7 +276,8 @@ function Projects() {
       githubUrl?: string
       demoUrl?: string
       image?: string
-      detailType?: 'pdf' | 'review-detail'
+      detailType?: 'pdf' | 'review-detail' | 'portfolio-detail'
+      liveUrl?: string
     }[] = [
       {
         info: '6인 풀스택 팀 프로젝트 [2025.10 ~ 2025.12]',
@@ -310,6 +310,17 @@ function Projects() {
           githubUrl: 'https://github.com/pic-pick/MY_PLANNER',
           image: myplannerImg,
 
+      },
+      {
+        info: '1인 개인 프로젝트 [2026.03]',
+        title: '포트폴리오 웹사이트 (1인 개인 프로젝트)',
+        description:
+          'React와 TypeScript를 기반으로 직접 디자인하고 구현한 개인 포트폴리오 웹사이트입니다. 프로젝트 소개, 기술 스택, 연락처, 상세 모달 구성을 통해 저의 개발 경험과 결과물을 한눈에 볼 수 있도록 구성했습니다.',
+        stack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Vercel'],
+        githubUrl: 'https://github.com/pic-pick/Portfolio',
+        liveUrl: 'https://portfolio-9fmvpypur-pro5kinghwan-5655s-projects.vercel.app/',
+        image: portfolioImg,
+        detailType: 'portfolio-detail',
       },
     ]
 
@@ -386,9 +397,35 @@ function Projects() {
                               type="button"
                               onClick={() => {
                                 if (project.detailType === 'review-detail') {
-                                  setSelectedProject({ title: project.title, type: 'review-detail', githubUrl: project.githubUrl, demoUrl: project.demoUrl })
+                                  setSelectedProject({
+                                    title: project.title,
+                                    type: 'review-detail',
+                                    githubUrl: project.githubUrl,
+                                    demoUrl: project.demoUrl,
+                                    description: project.description,
+                                    stack: project.stack,
+                                    liveUrl: project.liveUrl,
+                                  })
+                                } else if (project.detailType === 'portfolio-detail') {
+                                  setSelectedProject({
+                                    title: project.title,
+                                    type: 'portfolio-detail',
+                                    githubUrl: project.githubUrl,
+                                    description: project.description,
+                                    stack: project.stack,
+                                    liveUrl: project.liveUrl,
+                                  })
                                 } else if (project.pdfUrl) {
-                                  setSelectedProject({ title: project.title, type: 'pdf', pdfUrl: project.pdfUrl, githubUrl: project.githubUrl, demoUrl: project.demoUrl })
+                                  setSelectedProject({
+                                    title: project.title,
+                                    type: 'pdf',
+                                    pdfUrl: project.pdfUrl,
+                                    githubUrl: project.githubUrl,
+                                    demoUrl: project.demoUrl,
+                                    description: project.description,
+                                    stack: project.stack,
+                                    liveUrl: project.liveUrl,
+                                  })
                                 }
                               }}
                               className={`mt-6 flex w-full items-center justify-between text-sm font-medium transition duration-300 ${(project.detailType || project.pdfUrl) ? 'text-zinc-900 hover:text-zinc-600' : 'cursor-default text-zinc-400'}`}
@@ -413,6 +450,16 @@ function Projects() {
                                 </div>
 
                                 <div className="flex items-center gap-2 self-end sm:self-auto">
+                                    {selectedProject.liveUrl ? (
+                                        <a
+                                            href={selectedProject.liveUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="rounded-full border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-100"
+                                        >
+                                            사이트 보기
+                                        </a>
+                                    ) : null}
                                     {selectedProject.githubUrl ? (
                                         <a
                                             href={selectedProject.githubUrl}
@@ -477,7 +524,7 @@ function Projects() {
                                                     Project Meaning
                                                 </p>
                                                 <p className="mt-4 text-base leading-8 text-zinc-600">
-                                                    내가 처음으로 풀스택 단위의 프로젝트를 진행한 경험이었고, API와 데이터베이스를 연동해 개발한 것도 처음이었습니다.
+                                                    제가 처음으로 풀스택 단위의 프로젝트를 진행한 경험이었고, API와 데이터베이스를 연동해 개발한 것도 처음이었습니다.
                                                     백엔드 팀과 협업하는 과정에서 API 연결 방식과 서비스 구조를 실무처럼 익힐 수 있었고, 규모가 있는 프로젝트를 기능 단위로 나누어 개발하면서 GitHub 브랜치 전략과 PR 코드리뷰를 적극적으로 활용했습니다.
                                                     그 과정에서 충돌과 코드 이슈를 해결하는 방법까지 배울 수 있어 협업과 구조 설계 측면에서 특히 의미가 큰 프로젝트였습니다.
                                                 </p>
@@ -545,6 +592,47 @@ function Projects() {
                                                     className="h-full w-full object-cover"
                                                 />
                                             </div>
+                                        </section>
+                                    </div>
+                                </div>
+                            ) : selectedProject.type === 'portfolio-detail' ? (
+                                <div className="flex-1 overflow-y-auto bg-white px-4 py-6 sm:px-6 sm:py-8">
+                                    <div className="mx-auto max-w-4xl space-y-8">
+                                        <section className="border-t border-zinc-200 pt-6">
+                                            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">
+                                                Summary
+                                            </p>
+                                            <h4 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900">
+                                                포트폴리오 웹사이트
+                                            </h4>
+                                            <p className="mt-5 text-base leading-8 text-zinc-600">
+                                                {selectedProject.description}
+                                            </p>
+                                        </section>
+
+                                        <section className="border-t border-zinc-200 pt-6">
+                                            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">
+                                                Tech Stack
+                                            </p>
+                                            <div className="mt-5 flex flex-wrap gap-2">
+                                                {selectedProject.stack?.map((item) => (
+                                                    <span
+                                                        key={item}
+                                                        className="rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700"
+                                                    >
+                                                        {item}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </section>
+
+                                        <section className="border-t border-zinc-200 pt-6">
+                                            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">
+                                                Description
+                                            </p>
+                                            <p className="mt-4 text-base leading-8 text-zinc-600">
+                                                이 프로젝트에서는 React와 TypeScript를 사용해 전체 포트폴리오 구조를 컴포넌트 단위로 설계했고, Tailwind CSS를 활용해 반응형 레이아웃과 인터랙션을 구현했습니다. 또한 프로젝트별 상세 모달, 썸네일 카드, 기술 스택 소개, 연락처 섹션을 구성해 저의 포트폴리오를 자연스럽게 탐색할 수 있도록 개발했습니다.
+                                            </p>
                                         </section>
                                     </div>
                                 </div>
