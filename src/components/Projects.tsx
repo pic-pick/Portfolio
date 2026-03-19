@@ -93,17 +93,26 @@ function ReviewDetail({ selectedProject }: { selectedProject: SelectedProject })
 
                 <section className="border-t border-zinc-200 pt-6">
                     <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">What I Built</p>
-                    <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                    <div className="mt-4 rounded-2xl border border-zinc-200 bg-zinc-50 px-5 py-4">
+                        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400">담당 파트</p>
+                        <p className="mt-2 text-sm font-semibold text-zinc-900">마이페이지 전체 프론트엔드 개발</p>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                            {['주문·배송 관리', '찜 메뉴', '장바구니', '구매', '작성 후기 조회·수정·삭제', '고객센터'].map((item) => (
+                                <span key={item} className="rounded-full border border-zinc-200 bg-white px-3 py-1 text-xs font-medium text-zinc-700">{item}</span>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="mt-4 grid gap-4 sm:grid-cols-2">
                         <div className="rounded-2xl bg-zinc-50 p-5">
-                            <h5 className="text-lg font-semibold text-zinc-900">마이페이지 전체 UI 설계 및 구현</h5>
+                            <h5 className="text-lg font-semibold text-zinc-900">마이페이지 UI 설계 및 구현</h5>
                             <p className="mt-3 text-sm leading-7 text-zinc-600">
-                                React 기반으로 마이페이지 전반의 화면을 구성했습니다. 회원 정보 확인, 주문 관련 정보, 활동 내역처럼 사용자가 자신의 상태를 한눈에 확인할 수 있도록 레이아웃을 나누고, 화면 흐름이 복잡해지지 않도록 정보 구조와 UI 배치를 정리했습니다.
+                                주문·배송 관리, 찜 메뉴, 장바구니, 구매 내역, 작성 후기(조회·수정·삭제), 고객센터까지 마이페이지 전 영역의 화면을 React로 구현했습니다. 사용자가 자신의 상태를 한눈에 파악할 수 있도록 정보 구조와 UI 배치를 정리했습니다.
                             </p>
                         </div>
                         <div className="rounded-2xl bg-zinc-50 p-5">
                             <h5 className="text-lg font-semibold text-zinc-900">API 연동을 고려한 화면 상태 구성</h5>
                             <p className="mt-3 text-sm leading-7 text-zinc-600">
-                                백엔드에서 제공하는 회원 및 마이페이지 관련 API와 연결되는 것을 전제로 화면을 개발했습니다. 데이터 로딩 전후 상태, 사용자 정보 표시, 목록형 데이터 렌더링 등을 고려해 컴포넌트를 구성했고, 실제 서비스 화면처럼 자연스럽게 정보가 이어지도록 UI 흐름을 맞췄습니다.
+                                백엔드에서 제공하는 마이페이지 관련 API와 연결되는 것을 전제로 화면을 개발했습니다. 데이터 로딩 전후 상태, 목록형 데이터 렌더링 등을 고려해 컴포넌트를 구성했고, 실제 서비스 화면처럼 자연스럽게 정보가 이어지도록 UI 흐름을 맞췄습니다.
                             </p>
                         </div>
                         <div className="rounded-2xl bg-zinc-50 p-5">

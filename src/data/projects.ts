@@ -13,7 +13,8 @@ export const projects: ProjectItem[] = [
         description:
             '사용자의 피부 타입을 기반으로 맞춤 화장품을 추천하는 리뷰 중심 쇼핑몰 프로젝트입니다. 로그인/회원관리, 마이페이지, 리뷰 등을 작업한 팀 프로젝트입니다.',
         stack: ['React', 'JavaScript', 'Spring Boot', 'REST API', 'Git'],
-        githubUrl: 'https://github.com/pic-pick/Re_View',
+        githubUrl: 'https://github.com/VenyVince/Re_View',
+        liveUrl: 'https://re-view-9z8n.vercel.app/',
         demoUrl: 'https://www.youtube.com/embed/BPjU2JVhdm4',
         image: reviewImg,
         detailType: 'review-detail',
