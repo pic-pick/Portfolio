@@ -1,4 +1,4 @@
-export type ProjectDetailType = 'pdf' | 'review-detail' | 'portfolio-detail' |'daesul-detail'
+export type ProjectDetailType = 'pdf' | 'review-detail' | 'portfolio-detail' | 'daesul-detail' | 'chartinsight-detail' | 'dangdang-detail'
 
 export type SelectedProject = {
     title: string
