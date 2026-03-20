@@ -16,10 +16,12 @@ function Hero() {
                     <p className="mb-4 inline-flex rounded-full border border-zinc-200 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-zinc-600 shadow-sm">
                         Frontend Developer Portfolio
                     </p>
-                    <h1 className="text-3xl font-bold leading-tight tracking-tight text-zinc-900 transition duration-500 sm:text-5xl md:text-6xl">
+                    <h1 className="text-3xl font-bold leading-tight tracking-tight text-zinc-900 transition duration-500 sm:text-4xl md:text-5xl lg:text-6xl">
                         사용자의 경험을
                         <br />
-                        더 자연스럽게 만드는 개발자 오승환입니다.
+                        <span className="whitespace-nowrap">더 자연스럽게 만드는 개발자</span>
+                        <br />
+                        오승환입니다.
                     </h1>
                     <p className="mt-6 max-w-2xl text-sm leading-7 text-zinc-600 sm:text-lg sm:leading-8">
                         프론트엔드 개발자로서 작은 디테일이 사용자 경험을 만든다고 믿습니다. 화면의 섬세한 요소와 직관적인 상호작용을 통해 사람들이 자연스럽게 서비스를 이용할 수 있도록 고민하며 개발합니다.

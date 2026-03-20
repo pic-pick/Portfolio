@@ -1,14 +1,44 @@
-export const skillGroups = [
+export type SkillItem = {
+    name: string
+    icon?: string
+}
+
+export type SkillGroup = {
+    title: string
+    items: SkillItem[]
+}
+
+export const skillGroups: SkillGroup[] = [
     {
         title: 'Frontend',
-        items: ['React', 'TypeScript', 'JavaScript', 'HTML', 'CSS', 'Tailwind CSS'],
+        items: [
+            { name: 'React',        icon: 'react' },
+            { name: 'TypeScript',   icon: 'typescript' },
+            { name: 'JavaScript',   icon: 'javascript' },
+            { name: 'HTML',         icon: 'html5' },
+            { name: 'CSS',          icon: 'css' },
+            { name: 'Tailwind CSS', icon: 'tailwindcss' },
+            { name: 'Axios',        icon: 'axios' },
+            { name: 'CSS Modules' },
+        ],
     },
     {
         title: 'Backend',
-        items: ['Java', 'Spring Boot', 'Python', 'REST API'],
+        items: [
+            { name: 'Java',        icon: 'openjdk' },
+            { name: 'Spring Boot', icon: 'springboot' },
+            { name: 'Python',      icon: 'python' },
+            { name: 'REST API' },
+        ],
     },
     {
         title: 'Tools',
-        items: ['Git', 'GitHub', 'Figma', 'Notion'],
+        items: [
+            { name: 'Git',    icon: 'git' },
+            { name: 'GitHub', icon: 'github' },
+            { name: 'Figma',  icon: 'figma' },
+            { name: 'Notion', icon: 'notion' },
+            { name: 'Vite',   icon: 'vite' },
+        ],
     },
 ]

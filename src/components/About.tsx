@@ -57,11 +57,17 @@ function About() {
                         <div className="border-b border-zinc-200 pb-3">
                             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400">Major</p>
                             <p className="mt-2 text-sm font-medium text-zinc-900">인공지능융합학과</p>
+                            <p className="mt-1.5 text-xs leading-5 text-zinc-400">
+                                인공지능 기초 · Java · 자료구조 · 운영체제 · 데이터베이스 시스템 이론 · 임베디드소프트웨어
+                            </p>
                         </div>
 
                         <div className="border-b border-zinc-200 pb-3 sm:col-span-2">
                             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400">Double Major</p>
                             <p className="mt-2 text-sm font-medium text-zinc-900">스마트금융SW융합전공</p>
+                            <p className="mt-1.5 text-xs leading-5 text-zinc-400">
+                                미시 경제학 · 금융기관론 · 주택금융론
+                            </p>
                         </div>
                     </div>
 
@@ -78,14 +84,14 @@ function About() {
                         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-zinc-400">Timeline</p>
                         <div className="mt-6 space-y-8">
                             <div className="relative">
-                                <span className="absolute -left-[25px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-zinc-300 bg-white sm:-left-[33px]"></span>
+                                <span className="absolute -left-[25px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-zinc-300 bg-white sm:-left-[37px]"></span>
                                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400">2020.04 — 2020.10</p>
                                 <h4 className="mt-1.5 text-sm font-semibold text-zinc-900">Java 스터디 & 안드로이드 앱 개발</h4>
                                 <p className="mt-1 text-sm text-zinc-500">모임 연결 플랫폼 '모여봐' 앱 프로젝트</p>
                             </div>
 
                             <div className="relative">
-                                <span className="absolute -left-[25px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-zinc-300 bg-white sm:-left-[33px]"></span>
+                                <span className="absolute -left-[25px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-zinc-300 bg-white sm:-left-[37px]"></span>
                                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400">2021.10.30</p>
                                 <div className="mt-1.5 flex flex-wrap items-center gap-2">
                                     <h4 className="text-sm font-semibold text-zinc-900">교육혁신센터 실무코칭아카데미 Start-App 캠프&경진대회</h4>
@@ -95,7 +101,7 @@ function About() {
                             </div>
 
                             <div className="relative">
-                                <span className="absolute -left-[25px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-zinc-300 bg-white sm:-left-[33px]"></span>
+                                <span className="absolute -left-[25px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-zinc-300 bg-white sm:-left-[37px]"></span>
                                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400">2021.11.13</p>
                                 <div className="mt-1.5 flex flex-wrap items-center gap-2">
                                     <h4 className="text-sm font-semibold text-zinc-900">「Ticket to the Dream」 대학생 아이디어톤 경진대회</h4>
@@ -105,13 +111,33 @@ function About() {
                             </div>
 
                             <div className="relative">
-                                <span className="absolute -left-[25px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-zinc-300 bg-white sm:-left-[33px]"></span>
+                                <span className="absolute -left-[25px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-zinc-300 bg-white sm:-left-[37px]"></span>
                                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400">2022.09.03</p>
                                 <div className="mt-1.5 flex flex-wrap items-center gap-2">
                                     <h4 className="text-sm font-semibold text-zinc-900">융합SW교육원 SW실무아카데미 캠프 경진대회</h4>
                                     <span className="rounded-full bg-zinc-900 px-2.5 py-0.5 text-xs font-medium text-white">수상</span>
                                 </div>
                                 <p className="mt-1 text-sm text-zinc-500">여행 플래너 플랫폼 웹 기획 & 퍼블리셔 프로토타입 제작</p>
+                            </div>
+
+                            <div className="relative">
+                                <span className="absolute -left-[25px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-zinc-300 bg-white sm:-left-[37px]"></span>
+                                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400">2025.06 — 2025.12</p>
+                                <div className="mt-1.5 flex flex-wrap items-center gap-2">
+                                    <h4 className="text-sm font-semibold text-zinc-900">[현대이지웰] Java 풀스택 개발자 아카데미 6회차</h4>
+                                    <span className="rounded-full border border-zinc-300 px-2.5 py-0.5 text-xs font-medium text-zinc-500">수료</span>
+                                </div>
+                                <p className="mt-1 text-sm text-zinc-500">멀티캠퍼스 주관 Java 기반 풀스택 개발 교육 과정 수료</p>
+                            </div>
+
+                            <div className="relative">
+                                <span className="absolute -left-[25px] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-zinc-300 bg-white sm:-left-[37px]"></span>
+                                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-400">2025.10 — 2025.12</p>
+                                <div className="mt-1.5 flex flex-wrap items-center gap-2">
+                                    <h4 className="text-sm font-semibold text-zinc-900">화장품 쇼핑몰 Re:View 개발 프로젝트</h4>
+                                    <span className="rounded-full border border-zinc-300 px-2.5 py-0.5 text-xs font-medium text-zinc-500">Front</span>
+                                </div>
+                                <p className="mt-1 text-sm text-zinc-500">피부 타입 기반 맞춤 화장품 추천 리뷰 쇼핑몰 6인 팀 개발</p>
                             </div>
                         </div>
                     </div>
