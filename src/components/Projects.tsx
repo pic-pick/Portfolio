@@ -8,6 +8,9 @@ import daesulsc1 from "../assets/daesulsc1.png"
 import daesulsc2 from "../assets/daesulsc2.png"
 import daesulsc3 from "../assets/daesulsc3.png"
 import dangdangtripSCImg from "../assets/dangdangtripSC.png"
+import biolensExploreImg from "../assets/biolens-explore.png"
+import biolensSaveImg from "../assets/biolens-save.png"
+import biolensNetworkImg from "../assets/biolens-network.png"
 
 function ModalHeader({ selectedProject, onClose }: { selectedProject: SelectedProject; onClose: () => void }) {
     return (
@@ -48,6 +51,226 @@ function ModalHeader({ selectedProject, onClose }: { selectedProject: SelectedPr
                 >
                     닫기
                 </button>
+            </div>
+        </div>
+    )
+}
+
+function BioLensDetail({ selectedProject }: { selectedProject: SelectedProject }) {
+    return (
+        <div className="flex-1 overflow-y-auto bg-white px-4 py-6 sm:px-6 sm:py-8">
+            <div className="mx-auto max-w-5xl space-y-12">
+
+                {/* Summary */}
+                <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+                    <div>
+                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Summary</p>
+                        <h4 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900">BioLens 프로젝트 요약</h4>
+                        <p className="mt-5 text-base leading-8 text-zinc-600">
+                            BioLens는 신약 연구자를 위한 AI 기반 생의학 논문 탐색 웹 서비스입니다.
+                            PubMed에서 논문을 검색하고 GPT-4o-mini가 한국어 3줄 요약을 즉시 생성해주며,
+                            인용 네트워크 시각화와 스크랩보드 기능으로 연구 흐름을 한눈에 파악할 수 있도록 설계했습니다.
+                        </p>
+                        <div className="mt-5 flex flex-wrap gap-2">
+                            {(selectedProject.stack ?? []).map((s) => (
+                                <span key={s} className="rounded-full bg-zinc-100 px-3 py-1 text-xs font-medium text-zinc-600">{s}</span>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-50">
+                        <div className="aspect-[4/3] w-full">
+                            <img src={biolensExploreImg} alt="BioLens 논문 탐색 화면" className="h-full w-full object-cover" />
+                        </div>
+                    </div>
+                </section>
+
+                {/* Core Features */}
+                <section className="border-t border-zinc-200 pt-6">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Core Features</p>
+                    <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        {[
+                            { title: 'AI 한국어 요약', desc: 'GPT-4o-mini로 논문 Abstract를 한국어 3줄 요약 + 핵심 키워드 추출. 연구자가 빠르게 논문을 스크리닝할 수 있도록 지원' },
+                            { title: 'PubMed 통합 검색', desc: '무한 스크롤, 연도 범위·출판 유형·오픈 액세스 필터. 배치 EFetch로 API 호출을 22회→3회로 최적화' },
+                            { title: '연구 트렌드 시각화', desc: 'Chart.js 기반 2000년~현재까지 연도별 논문 발표 수 바 차트로 연구 흐름 파악' },
+                            { title: '인용 네트워크 그래프', desc: 'Semantic Scholar + iCite API 연동, vis-network 라이브러리로 선행/후행 논문 관계를 인터랙티브 그래프로 시각화' },
+                            { title: '스크랩보드', desc: '관심 논문을 주제별로 저장·분류. localStorage 기반으로 로그인 없이 사용 가능' },
+                            { title: '다중 논문 비교', desc: '최대 5개 논문을 동시 분석, 연구 방법론·결과·한계점 비교 테이블 생성' },
+                        ].map((f) => (
+                            <div key={f.title} className="rounded-2xl bg-zinc-50 p-5">
+                                <h5 className="text-sm font-semibold text-zinc-900">{f.title}</h5>
+                                <p className="mt-2 text-sm leading-7 text-zinc-500">{f.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Technical Highlights */}
+                <section className="border-t border-zinc-200 pt-6">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Technical Highlights</p>
+                    <div className="mt-5 grid gap-4 lg:grid-cols-2">
+                        <div className="rounded-2xl bg-zinc-50 p-5">
+                            <h5 className="mb-3 text-sm font-semibold uppercase tracking-[0.15em] text-zinc-500">API 최적화</h5>
+                            <ul className="space-y-3 text-sm leading-7 text-zinc-600">
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    배치 EFetch로 개별 Abstract 호출 20개를 1번의 API 호출로 통합, 요청 수 22→3회 절감
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    NCBI Rate Limiter 큐 구현 (API Key 없이 3 req/s, Key 사용 시 10 req/s)
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    History Server(WebEnv/query_key) 기반 페이지네이션으로 ESearch 재호출 없이 무한 스크롤 구현
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="rounded-2xl border border-zinc-200 p-5">
+                            <h5 className="mb-3 text-sm font-semibold uppercase tracking-[0.15em] text-zinc-500">Vue 3 Composition API 설계</h5>
+                            <ul className="space-y-3 text-sm leading-7 text-zinc-600">
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    usePubmed.js 컴포저블로 검색·페이지네이션·AI 요약 로직을 캡슐화
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    App.vue 중앙 상태 관리 → SearchBar/PaperCard 컴포넌트로 단방향 데이터 흐름
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    한국어 입력 감지 후 영어 검색 권장, XML 파싱으로 MeSH 용어 자동 추출
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Vibe Coding Process */}
+                <section className="border-t border-zinc-200 pt-6">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Vibe Coding Process</p>
+                    <h5 className="mt-3 text-xl font-bold tracking-tight text-zinc-900">바이브코딩 개발 과정</h5>
+                    <p className="mt-3 text-base leading-8 text-zinc-600">
+                        BioLens는 코드 작성 전 충분한 사전 조사와 설계를 거친 <strong>Research → Plan → Build</strong> 사이클로 개발했습니다.
+                        Claude Code를 활용해 2일 만에 완성했으며, 무작정 코딩하는 방식 대신 구조화된 문서 작성이 반복 수정과 토큰 비용을 크게 줄이고 결과물 퀄리티도 눈에 띄게 올라간다는 것을 직접 경험했습니다.
+                    </p>
+
+                    {/* Cycle Diagram */}
+                    <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                        <div className="relative rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
+                            <div className="mb-3 flex items-center gap-2">
+                                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900 text-xs font-bold text-white">1</span>
+                                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-500">Research</span>
+                            </div>
+                            <p className="text-sm font-semibold text-zinc-900">research.md 작성</p>
+                            <ul className="mt-3 space-y-2 text-sm leading-6 text-zinc-500">
+                                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>PubMed E-utilities API 스펙 분석 (Rate Limit, 배치 전략, 필드 태그)</li>
+                                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>iCite / Semantic Scholar 인용 API 연구</li>
+                                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>한국어 검색 불가 이슈 파악 및 우회 전략 도출</li>
+                                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>OpenAI JSON 응답 안전성 검토</li>
+                            </ul>
+                        </div>
+                        <div className="relative rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
+                            <div className="mb-3 flex items-center gap-2">
+                                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900 text-xs font-bold text-white">2</span>
+                                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-500">Plan</span>
+                            </div>
+                            <p className="text-sm font-semibold text-zinc-900">plan.md 작성</p>
+                            <ul className="mt-3 space-y-2 text-sm leading-6 text-zinc-500">
+                                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>Rate Limiter · XML 파서 · usePubmed.js 컴포저블 설계</li>
+                                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>AI 요약 · iCite 인용 지표 · 확장형 PaperCard UI</li>
+                                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>Chart.js 트렌드 시각화 · 인용 네트워크 · Vercel 배포</li>
+                                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>컴포넌트 구조 및 데이터 흐름 사전 확정</li>
+                            </ul>
+                        </div>
+                        <div className="relative rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
+                            <div className="mb-3 flex items-center gap-2">
+                                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-zinc-900 text-xs font-bold text-white">3</span>
+                                <span className="text-xs font-semibold uppercase tracking-[0.15em] text-zinc-500">Build</span>
+                            </div>
+                            <p className="text-sm font-semibold text-zinc-900">Claude Code로 구현</p>
+                            <ul className="mt-3 space-y-2 text-sm leading-6 text-zinc-500">
+                                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>research.md · plan.md를 컨텍스트로 제공해 AI가 설계 의도를 정확히 반영</li>
+                                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>기능 단위로 프롬프트 분할, 각 단계 결과를 검토 후 다음 단계 진행</li>
+                                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>총 개발 기간 2~3일 완성</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    {/* Prompt Strategy */}
+                    <div className="mt-6 rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
+                        <h6 className="text-sm font-semibold uppercase tracking-[0.15em] text-zinc-500">주요 프롬프트 전략</h6>
+                        <div className="mt-4 space-y-3">
+                            {[
+                                { label: '컨텍스트 선주입', desc: '코딩 시작 전 research.md와 plan.md 전문을 프롬프트에 포함 → AI가 API 제약·설계 의도를 처음부터 인식하도록 설정' },
+                                { label: '기능 단위 분할', desc: 'Rate Limiter → XML 파서 → 컴포저블 → UI 순서로 독립 단위를 순차 구현, 각 단계 검토 후 다음 프롬프트 전달' },
+                                { label: '제약 조건 명시', desc: '"NCBI API Key 없이 3 req/s 제한 준수", "XML EFetch 응답 파싱" 등 구체적 제약을 프롬프트에 명시해 잘못된 코드 생성 방지' },
+                                { label: '문서화 병행', desc: '구현 중 발견한 엣지케이스(한국어 검색 실패, HTTP 200 + 에러 바디 패턴)를 문서에 추가하며 다음 프롬프트에 반영' },
+                            ].map((s) => (
+                                <div key={s.label} className="flex items-start gap-3">
+                                    <span className="mt-1 shrink-0 rounded bg-zinc-200 px-1.5 py-0.5 text-xs font-semibold text-zinc-600">{s.label}</span>
+                                    <p className="text-sm leading-7 text-zinc-600">{s.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Screenshots */}
+                <section className="border-t border-zinc-200 pt-6">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Screenshots</p>
+                    <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                        <div className="overflow-hidden rounded-2xl border border-zinc-200">
+                            <img src={biolensExploreImg} alt="논문 탐색 화면" className="w-full object-cover" />
+                            <p className="px-4 py-2 text-xs text-zinc-400">논문 탐색 &amp; AI 요약</p>
+                        </div>
+                        <div className="overflow-hidden rounded-2xl border border-zinc-200">
+                            <img src={biolensSaveImg} alt="스크랩 화면" className="w-full object-cover" />
+                            <p className="px-4 py-2 text-xs text-zinc-400">스크랩보드</p>
+                        </div>
+                        <div className="overflow-hidden rounded-2xl border border-zinc-200 sm:col-span-2">
+                            <img src={biolensNetworkImg} alt="인용 네트워크 화면" className="w-full object-cover" />
+                            <p className="px-4 py-2 text-xs text-zinc-400">인용 네트워크 그래프 (선행/후행 논문)</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Retrospective */}
+                <section className="border-t border-zinc-200 pt-6">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Retrospective</p>
+                    <div className="mt-5 grid gap-4 lg:grid-cols-2">
+                        <div className="rounded-2xl bg-zinc-50 p-5">
+                            <h5 className="mb-3 text-sm font-semibold uppercase tracking-[0.15em] text-zinc-500">배운 점</h5>
+                            <ul className="space-y-3 text-sm leading-7 text-zinc-600">
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    코딩 전 충분한 API 리서치와 설계 문서 작성이 반복 수정 비용을 대폭 줄여준다는 것을 실감했습니다.
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    Vue 3 Composition API의 컴포저블 패턴으로 관심사를 명확히 분리하는 방법을 익혔습니다.
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    Rate Limit 제약 안에서 배치 처리로 성능을 최적화하는 실용적인 API 설계 경험을 쌓았습니다.
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="rounded-2xl border border-zinc-200 p-5">
+                            <h5 className="mb-3 text-sm font-semibold uppercase tracking-[0.15em] text-zinc-500">아쉬웠던 점</h5>
+                            <ul className="space-y-3 text-sm leading-7 text-zinc-600">
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-300"></span>
+                                    OpenAI API Key를 클라이언트에서 직접 사용해 보안상 이슈가 있습니다. 서버리스 함수로 분리하는 것이 이상적입니다.
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-300"></span>
+                                    Semantic Scholar API 응답 지연으로 네트워크 그래프 초기 로딩이 느린 경우가 있어, 24시간 캐싱 전략을 도입하면 개선될 것 같습니다.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
             </div>
         </div>
     )
@@ -538,6 +761,9 @@ function ProjectModal({
     onClose: () => void
 }) {
     const renderContent = () => {
+        if (selectedProject.type === "biolens-detail") {
+            return <BioLensDetail selectedProject={selectedProject} />
+        }
         if (selectedProject.type === "review-detail") {
             return <ReviewDetail selectedProject={selectedProject} />
         }
@@ -578,7 +804,16 @@ function Projects() {
     const [selectedProject, setSelectedProject] = useState<SelectedProject | null>(null)
 
     const handleOpenProject = (project: ProjectItem) => {
-        if (project.detailType === "review-detail") {
+        if (project.detailType === "biolens-detail") {
+            setSelectedProject({
+                title: project.title,
+                type: "biolens-detail",
+                githubUrl: project.githubUrl,
+                description: project.description,
+                stack: project.stack,
+                liveUrl: project.liveUrl,
+            })
+        } else if (project.detailType === "review-detail") {
             setSelectedProject({
                 title: project.title,
                 type: "review-detail",

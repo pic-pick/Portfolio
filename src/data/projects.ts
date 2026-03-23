@@ -4,9 +4,21 @@ import myplannerImg from "../assets/myplannerimg.png"
 import portfolioImg from "../assets/portfolio.png"
 import daesulIng from "../assets/daesulImg.png"
 import dangdangtripImg from "../assets/dangdangtrip.png"
+import biolensImg from "../assets/biolens.png"
 import type { ProjectItem } from "../types/project"
 
 export const projects: ProjectItem[] = [
+    {
+        info: '1인 개인 프로젝트 [2026.03]',
+        title: 'BioLens (바이브 코딩 프로젝트)',
+        description:
+            'AI 기반 생의학 논문 탐색 웹 서비스입니다. PubMed API 연동, GPT-4o-mini 한국어 3줄 요약, 인용 네트워크 시각화, 스크랩보드 등 신약 연구자를 위한 논문 탐색 기능을 제공합니다.',
+        stack: ['Vue 3', 'Composition API', 'Cli', 'Vite', 'Tailwind CSS', 'Chart.js', 'vis-network', 'OpenAI API', 'PubMed API'],
+        githubUrl: 'https://github.com/pic-pick/biolens',
+        liveUrl: 'https://biolens-opal.vercel.app/',
+        image: biolensImg,
+        detailType: 'biolens-detail',
+    },
     {
         info: '6인 풀스택 팀 프로젝트 [2025.10 ~ 2025.12]',
         title: 'Re:View (풀스택 6인 팀프로젝트)',
