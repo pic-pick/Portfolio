@@ -260,11 +260,7 @@ function BioLensDetail({ selectedProject }: { selectedProject: SelectedProject }
                             <ul className="space-y-3 text-sm leading-7 text-zinc-600">
                                 <li className="flex items-start gap-2">
                                     <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-300"></span>
-                                    OpenAI API Key를 클라이언트에서 직접 사용해 보안상 이슈가 있습니다. 서버리스 함수로 분리하는 것이 이상적입니다.
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-300"></span>
-                                    Semantic Scholar API 응답 지연으로 네트워크 그래프 초기 로딩이 느린 경우가 있어, 24시간 캐싱 전략을 도입하면 개선될 것 같습니다.
+                                    Semantic Scholar API 응답 지연으로 네트워크 그래프 초기 로딩이 느린 점이 아쉬웠습니다.
                                 </li>
                             </ul>
                         </div>
