@@ -191,7 +191,7 @@ function BioLensDetail({ selectedProject }: { selectedProject: SelectedProject }
                             <ul className="mt-3 space-y-2 text-sm leading-6 text-zinc-500">
                                 <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>research.md · plan.md를 컨텍스트로 제공해 AI가 설계 의도를 정확히 반영</li>
                                 <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>기능 단위로 프롬프트 분할, 각 단계 결과를 검토 후 다음 단계 진행</li>
-                                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>총 개발 기간 2~3일 완성</li>
+                                <li className="flex items-start gap-2"><span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-zinc-400"></span>총 개발 기간 2일 완성</li>
                             </ul>
                         </div>
                     </div>
