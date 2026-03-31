@@ -1,4 +1,5 @@
-export type ProjectDetailType = 'pdf' | 'biolens-detail' | 'review-detail' | 'portfolio-detail' | 'daesul-detail' | 'chartinsight-detail' | 'dangdang-detail'
+export type ProjectDetailType = 'pdf' | 'biolens-detail' | 'review-detail' | 'portfolio-detail' | 'daesul-detail' | 'chartinsight-detail' | 'dangdang-detail' | 'adwall-detail'
+export type ProjectGroup = 'main' | 'vibe'
 
 export type SelectedProject = {
     title: string
@@ -12,6 +13,7 @@ export type SelectedProject = {
 }
 
 export type ProjectItem = {
+    group: ProjectGroup
     info: string
     title: string
     description: string

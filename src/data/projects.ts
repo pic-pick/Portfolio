@@ -5,12 +5,14 @@ import portfolioImg from "../assets/portfolio.png"
 import daesulIng from "../assets/daesulImg.png"
 import dangdangtripImg from "../assets/dangdangtrip.png"
 import biolensImg from "../assets/biolens.png"
+import adwallImg from "../assets/adwall.png"
 import type { ProjectItem } from "../types/project"
 
 export const projects: ProjectItem[] = [
     {
+        group: 'vibe',
         info: '1인 개인 프로젝트 [2026.03]',
-        title: 'BioLens (바이브 코딩 프로젝트)',
+        title: 'BioLens 바이오 논문 탐색 서비스',
         description:
             'AI 기반 생의학 논문 탐색 웹 서비스입니다. PubMed API 연동, GPT-4o-mini 한국어 3줄 요약, 인용 네트워크 시각화, 스크랩보드 등 신약 연구자를 위한 논문 탐색 기능을 제공합니다.',
         stack: ['Vue 3', 'Composition API', 'Cli', 'Vite', 'Tailwind CSS', 'Chart.js', 'vis-network', 'OpenAI API', 'PubMed API'],
@@ -20,6 +22,7 @@ export const projects: ProjectItem[] = [
         detailType: 'biolens-detail',
     },
     {
+        group: 'main',
         info: '6인 풀스택 팀 프로젝트 [2025.10 ~ 2025.12]',
         title: 'Re:View (풀스택 6인 팀프로젝트)',
         description:
@@ -32,6 +35,7 @@ export const projects: ProjectItem[] = [
         detailType: 'review-detail',
     },
     {
+        group: 'main',
         info: '1인 개인 프로젝트 [2026.03]',
         title: '댕댕트립 (1인 개인 프로젝트)',
         description:
@@ -43,6 +47,19 @@ export const projects: ProjectItem[] = [
         detailType: 'dangdang-detail',
     },
     {
+        group: 'vibe',
+        info: '1인 개인 프로젝트 [2026.03]',
+        title: 'AdWall 오퍼월 웹 프론트엔드',
+        description:
+            '오퍼월 서비스의 메인 대시보드, 미션 탐색, 참여 히스토리, 리워드샵을 하나의 SPA로 구현한 프론트엔드 프로젝트입니다. React Router 기반 라우팅과 목업 데이터 중심 설계, 모바일/데스크탑 반응형 UX를 구성했습니다.',
+        stack: ['React', 'TypeScript', 'React Router DOM', 'Tailwind CSS', 'Vite', 'Mock Data'],
+        githubUrl: 'https://github.com/pic-pick/Offerwall-Web-FrontEnd',
+        liveUrl: 'https://offerwall-web-front-end.vercel.app/',
+        image: adwallImg,
+        detailType: 'adwall-detail',
+    },
+    {
+        group: 'main',
         info: '1인 개인 프로젝트 [2025.11 ~ 2025.12]',
         title: '차트인사이트 AI (1인 개인 프로젝트)',
         description:
@@ -54,6 +71,7 @@ export const projects: ProjectItem[] = [
         detailType: 'chartinsight-detail',
     },
     {
+        group: 'main',
         info: '개인 프로젝트 [2026.03]',
         title: '대설 빙수 웹 퍼블리싱 사이트',
         description:
@@ -65,6 +83,7 @@ export const projects: ProjectItem[] = [
         detailType: 'daesul-detail',
     },
     {
+        group: 'main',
         info: '1인 개인 프로젝트 [2026.03]',
         title: '포트폴리오 웹사이트 (1인 개인 프로젝트)',
         description:
@@ -76,6 +95,7 @@ export const projects: ProjectItem[] = [
         detailType: 'portfolio-detail',
     },
     {
+        group: 'main',
         info: '웹개발 경진대회 해커톤 프로젝트 [2022.9]',
         title: '마이 플래너 (웹개발 경진대회 해커톤)',
         description:

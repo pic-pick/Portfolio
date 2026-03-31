@@ -11,6 +11,8 @@ import dangdangtripSCImg from "../assets/dangdangtripSC.png"
 import biolensExploreImg from "../assets/biolens-explore.png"
 import biolensSaveImg from "../assets/biolens-save.png"
 import biolensNetworkImg from "../assets/biolens-network.png"
+import adwallImg from "../assets/adwall.png"
+import adwallMobileImg from "../assets/adwall-mobile.png"
 
 function ModalHeader({ selectedProject, onClose }: { selectedProject: SelectedProject; onClose: () => void }) {
     return (
@@ -558,6 +560,167 @@ function PortfolioDetail({ selectedProject }: { selectedProject: SelectedProject
     )
 }
 
+function AdwallDetail({ selectedProject }: { selectedProject: SelectedProject }) {
+    return (
+        <div className="flex-1 overflow-y-auto bg-white px-4 py-6 sm:px-6 sm:py-8">
+            <div className="mx-auto max-w-5xl space-y-10">
+                <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+                    <div>
+                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Summary</p>
+                        <h4 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900">AdWall 오퍼월 웹 프론트엔드</h4>
+                        <p className="mt-5 text-base leading-8 text-zinc-600">
+                            메인 대시보드, 미션 탐색, 참여 히스토리, 리워드샵까지 이어지는 오퍼월 서비스 흐름을 하나의 React SPA로 구현한 프론트엔드 프로젝트입니다.
+                            실제 API 없이도 서비스처럼 탐색하고 상호작용할 수 있도록 목업 데이터 중심으로 구조를 설계했고, 데스크탑과 모바일에서 각각 자연스럽게 동작하는 대시보드형 UX를 구성했습니다.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden rounded-3xl border border-zinc-200 bg-zinc-50">
+                        <div className="aspect-[4/3] w-full">
+                            <img src={adwallImg} alt="AdWall 메인 대시보드 화면" className="h-full w-full object-cover" />
+                        </div>
+                    </div>
+                </section>
+
+                <section className="grid gap-8 lg:grid-cols-2">
+                    <div className="border-t border-zinc-200 pt-6">
+                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Background</p>
+                        <p className="mt-4 text-base leading-8 text-zinc-600">
+                            광고/리워드 미션 플랫폼을 가정하고, 단순 랜딩 페이지가 아니라 실제 서비스처럼 보이는 오퍼월 UI를 포트폴리오 수준으로 재구성하는 것을 목표로 진행했습니다.
+                            사용자가 포인트 현황을 확인하고, 미션을 탐색하고, 참여 내역과 리워드 교환까지 한 흐름 안에서 경험할 수 있도록 정보 구조를 설계했습니다.
+                        </p>
+                    </div>
+                    <div className="border-t border-zinc-200 pt-6">
+                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Architecture</p>
+                        <p className="mt-4 text-base leading-8 text-zinc-600">
+                            `react-router-dom` 기반으로 `/`, `/missions`, `/history`, `/reward-shop` 4개 라우트를 구성하고, `AppShell`에서 헤더·푸터·스크롤 탑 버튼을 공통 레이아웃으로 관리했습니다.
+                            페이지 전환은 Router가 담당하고, 미션 상세 모달·카테고리 필터·공지 모달·토스트 같은 세부 인터랙션은 각 페이지 내부 state로 분리해 SPA 구조를 명확히 나눴습니다.
+                        </p>
+                    </div>
+                </section>
+
+                <section className="border-t border-zinc-200 pt-6">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Tech Stack</p>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                        {selectedProject.stack?.map((item) => (
+                            <span key={item} className="rounded-full border border-zinc-200 bg-zinc-50 px-4 py-2 text-sm font-medium text-zinc-700">{item}</span>
+                        ))}
+                    </div>
+                </section>
+
+                <section className="border-t border-zinc-200 pt-6">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Core Features</p>
+                    <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                        {[
+                            {
+                                title: '대시보드 홈',
+                                desc: '월간 적립 포인트 히어로 카드, 자동 순환 HOT 프로모션 슬라이드, 완료 미션 카드와 요약 KPI 카드로 오퍼월 메인 진입 화면을 구성했습니다.',
+                            },
+                            {
+                                title: '미션 탐색',
+                                desc: '카테고리 필터와 추천 미션 카드, 리스트형 미션 섹션을 결합해 홈과 미션 페이지 모두에서 같은 데이터 구조를 재사용하도록 설계했습니다.',
+                            },
+                            {
+                                title: '미션 상세 모달',
+                                desc: '미션 정보, 예상 적립 포인트, 참여 단계, CTA를 모달로 제공하고 참여 완료 시 토스트 피드백까지 이어지도록 구현했습니다.',
+                            },
+                            {
+                                title: '히스토리 페이지',
+                                desc: '이번 달 참여 건수, 누적 적립, 완료율 KPI와 최근 활동 내역 리스트를 배치해 사용자가 자신의 참여 상태를 한눈에 파악할 수 있게 했습니다.',
+                            },
+                            {
+                                title: '리워드샵',
+                                desc: '현재 포인트에 따라 즉시 교환 가능, 조금만 더, 포인트 부족 상태가 갈리는 리워드 카드 구조를 만들고 교환 흐름을 서비스형 UI로 정리했습니다.',
+                            },
+                            {
+                                title: '모바일 최적화',
+                                desc: '햄버거 메뉴, 가로 스와이프 카테고리, 모바일 전용 카드 재배치와 대시보드 요약 바텀시트형 모달로 작은 화면에 맞는 탐색 경험을 구성했습니다.',
+                            },
+                        ].map((feature) => (
+                            <div key={feature.title} className="rounded-2xl bg-zinc-50 p-5">
+                                <h5 className="text-sm font-semibold text-zinc-900">{feature.title}</h5>
+                                <p className="mt-2 text-sm leading-7 text-zinc-500">{feature.desc}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                <section className="border-t border-zinc-200 pt-6">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Implementation Points</p>
+                    <div className="mt-5 grid gap-4 lg:grid-cols-2">
+                        <div className="rounded-2xl bg-zinc-50 p-5">
+                            <h5 className="mb-3 text-sm font-semibold uppercase tracking-[0.15em] text-zinc-500">라우팅 + 공통 레이아웃</h5>
+                            <ul className="space-y-3 text-sm leading-7 text-zinc-600">
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    `BrowserRouter`와 4개 메인 라우트로 서비스 흐름을 분리하고, `AppShell`에서 Header, Footer, ScrollToTopButton을 공통 처리했습니다.
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    페이지 전환 시 스크롤을 상단으로 초기화해 실제 서비스처럼 자연스럽게 이동하도록 구성했습니다.
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="rounded-2xl border border-zinc-200 p-5">
+                            <h5 className="mb-3 text-sm font-semibold uppercase tracking-[0.15em] text-zinc-500">상태 관리와 UX 디테일</h5>
+                            <ul className="space-y-3 text-sm leading-7 text-zinc-600">
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    `selectedOffer`, `selectedCategory`, `noticeOpen`, `activeDashboardModal`, `toastVisible` 상태를 분리해 모달/필터/토스트 흐름을 관리했습니다.
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    ESC 닫기, 배경 클릭 닫기, body scroll lock, 자동 사라지는 토스트 등 서비스형 인터랙션을 구현했습니다.
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="rounded-2xl bg-zinc-50 p-5">
+                            <h5 className="mb-3 text-sm font-semibold uppercase tracking-[0.15em] text-zinc-500">데이터 중심 설계</h5>
+                            <ul className="space-y-3 text-sm leading-7 text-zinc-600">
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    `mockData.ts` 한 파일에 네비게이션, 사용자 요약, 카테고리, 미션, 히스토리, 리워드 데이터를 모아 API 교체가 쉬운 구조로 정리했습니다.
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    타입 정의를 함께 두어 카드형 UI, 리스트형 UI, 모달 UI가 같은 데이터를 서로 다른 방식으로 안전하게 재사용하도록 설계했습니다.
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="rounded-2xl border border-zinc-200 p-5">
+                            <h5 className="mb-3 text-sm font-semibold uppercase tracking-[0.15em] text-zinc-500">반응형 대시보드 UI</h5>
+                            <ul className="space-y-3 text-sm leading-7 text-zinc-600">
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    데스크탑에서는 카드 밀도와 정보량을 높이고, 모바일에서는 우선순위가 높은 정보부터 보이도록 `2 + 1` 카드 배치와 스와이프형 카테고리 UI를 적용했습니다.
+                                </li>
+                                <li className="flex items-start gap-2">
+                                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-zinc-400"></span>
+                                    홈과 미션 페이지에서 카테고리, 추천 미션, 리스트 섹션을 공용 컴포넌트로 재사용해 일관된 화면 경험을 유지했습니다.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section className="border-t border-zinc-200 pt-6">
+                    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-zinc-400">Screenshots</p>
+                    <div className="mt-5 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+                        <div className="overflow-hidden rounded-2xl border border-zinc-200">
+                            <img src={adwallImg} alt="AdWall 데스크탑 메인 화면" className="w-full object-cover" />
+                            <p className="px-4 py-2 text-xs text-zinc-400">데스크탑 메인 대시보드</p>
+                        </div>
+                        <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50">
+                            <div className="flex h-full items-center justify-center p-4">
+                                <img src={adwallMobileImg} alt="AdWall 모바일 화면" className="max-h-[560px] w-auto rounded-[24px] object-contain shadow-sm" />
+                            </div>
+                            <p className="px-4 py-2 text-xs text-zinc-400">모바일 대표 화면</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    )
+}
+
 function DaesulDetail({ selectedProject }: { selectedProject: SelectedProject }) {
     return (
         <div className="flex-1 overflow-y-auto bg-white px-4 py-6 sm:px-6 sm:py-8">
@@ -769,6 +932,9 @@ function ProjectModal({
         if (selectedProject.type === "portfolio-detail") {
             return <PortfolioDetail selectedProject={selectedProject} />
         }
+        if (selectedProject.type === "adwall-detail") {
+            return <AdwallDetail selectedProject={selectedProject} />
+        }
         if (selectedProject.type === "daesul-detail") {
             return <DaesulDetail selectedProject={selectedProject} />
         }
@@ -798,6 +964,14 @@ function ProjectModal({
 
 function Projects() {
     const [selectedProject, setSelectedProject] = useState<SelectedProject | null>(null)
+    const mainProjects = projects.filter((project) => project.group === "main")
+    const vibeProjects = projects
+        .filter((project) => project.group === "vibe")
+        .sort((a, b) => {
+            if (a.title.includes("AdWall")) return -1
+            if (b.title.includes("AdWall")) return 1
+            return 0
+        })
 
     const handleOpenProject = (project: ProjectItem) => {
         if (project.detailType === "biolens-detail") {
@@ -833,6 +1007,15 @@ function Projects() {
             setSelectedProject({
                 title: project.title,
                 type: "dangdang-detail",
+                githubUrl: project.githubUrl,
+                description: project.description,
+                stack: project.stack,
+                liveUrl: project.liveUrl,
+            })
+        } else if (project.detailType === "adwall-detail") {
+            setSelectedProject({
+                title: project.title,
+                type: "adwall-detail",
                 githubUrl: project.githubUrl,
                 description: project.description,
                 stack: project.stack,
@@ -879,18 +1062,54 @@ function Projects() {
 
                 <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                     <h2 className="text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">
-                        주요 프로젝트
+                        프로젝트
                     </h2>
                 </div>
 
-                <div className="mt-10 grid gap-6 md:grid-cols-3">
-                    {projects.map((project) => (
-                        <ProjectCard
-                            key={project.title}
-                            project={project}
-                            onOpen={handleOpenProject}
-                        />
-                    ))}
+                <div className="mt-10">
+                    <div className="flex items-end justify-between gap-4 border-b border-zinc-200 pb-4">
+                        <div>
+                            <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">
+                                주요 프로젝트
+                            </h3>
+                            <p className="mt-2 text-sm leading-7 text-zinc-500">
+                                팀 프로젝트와 개인 프로젝트 중심으로 정리한 작업들입니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="mt-6 grid gap-6 md:grid-cols-3">
+                        {mainProjects.map((project) => (
+                            <ProjectCard
+                                key={project.title}
+                                project={project}
+                                onOpen={handleOpenProject}
+                            />
+                        ))}
+                    </div>
+                </div>
+
+                <div className="mt-16">
+                    <div className="flex items-end justify-between gap-4 border-b border-zinc-200 pb-4">
+                        <div>
+                            <h3 className="text-2xl font-semibold tracking-tight text-zinc-900">
+                                Vibe Code 프로젝트
+                            </h3>
+                            <p className="mt-2 text-sm leading-7 text-zinc-500">
+                                리서치와 설계를 먼저 정리한 뒤 빠르게 구현한 서비스형 프론트엔드 프로젝트입니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="mt-6 grid gap-6 md:grid-cols-3">
+                        {vibeProjects.map((project) => (
+                            <ProjectCard
+                                key={project.title}
+                                project={project}
+                                onOpen={handleOpenProject}
+                            />
+                        ))}
+                    </div>
                 </div>
 
                 {selectedProject ? (
